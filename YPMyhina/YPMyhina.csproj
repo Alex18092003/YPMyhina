@@ -94,5 +94,23 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\A346R4.jpg" />
+    <Resource Include="Image\A543T6.jpg" />
+    <Resource Include="Image\B730E2.jpg" />
+    <Resource Include="Image\D419T7.png" />
+    <Resource Include="Image\F719R5.jpg" />
+    <Resource Include="Image\G278R6.png" />
+    <Resource Include="Image\H452A3.png" />
+    <Resource Include="Image\R259E6.jpg" />
+    <Resource Include="Image\T564P5.jpg" />
+    <Resource Include="Image\А112Т4.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Classes\" />
+    <Folder Include="Pages\" />
+    <Folder Include="Resorces\" />
+    <Folder Include="Windows\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
