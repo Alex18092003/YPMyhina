@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace YPMyhina.Pages
 {
@@ -20,32 +21,90 @@ namespace YPMyhina.Pages
     /// </summary>
     public partial class PageAuthorization : Page
     {
+        private int timer = 10;
+        DispatcherTimer dispatcherTimer = new DispatcherTimer();
+
         public PageAuthorization()
         {
             InitializeComponent();
         }
-
-        private void TextLogin_KeyDown(object sender, KeyEventArgs e)
+        public PageAuthorization(int j)
         {
-            if(e.Key == Key.Enter)
+            InitializeComponent();
+            if (j == 1)
             {
-                TextPassword.Focus();
-            }
-
-        }
-        private void Proverka()
-        {
-            User user = ClassBase.entities.User.FirstOrDefault(x => x.UserPassword == TextPassword.Text && x.UserLogin == TextLogin.Text);
-            if(user != null)
-            {
-                int role = user.UserRole;
-                MessageBox.Show($"{role}", "sd");
-                Classes.ClassFrame.frame.Navigate(new PageProductList(role));
+                TextTimer.Text = "Попробуйте ввести ещё раз Логин и Пароль";
             }
             else
             {
-                MessageBox.Show("Данный логин и пароль не зарегистрированы", "Сообщение");
+                TextPassword.IsEnabled = false;
+                TextLogin.IsEnabled = false;
+               ButtonEntrance.IsEnabled = false;
+                dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
+                dispatcherTimer.Tick += new EventHandler(Back);
+                dispatcherTimer.Start();
+
             }
+        }
+
+        private void Back(object sender, EventArgs e)
+        {
+            if (timer == -1)
+            {
+                dispatcherTimer.Stop();
+                TextPassword.IsEnabled = true;
+                TextLogin.IsEnabled = true;
+                ButtonEntrance.IsEnabled = true;
+                TextTimer.Text = "Попробуйте ввести ещё раз Логин и Пароль";
+                
+            }
+            else
+            {
+                TextTimer.Text = "Повторно ввести Логин и Пароль можно будет через: " + timer;
+               
+            }
+            timer--;
+        }
+
+        private void TextLogin_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.Key == Key.Enter)
+                {
+                    TextPassword.Focus();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Что-то пошло не так", "Ошибка");
+            }
+        }
+
+        /// <summary>
+        /// метод для проверки логина и пароля пользователя
+        /// </summary>
+        private void Proverka()
+        {
+
+                User user = ClassBase.entities.User.FirstOrDefault(x => x.UserPassword == TextPassword.Text && x.UserLogin == TextLogin.Text);
+                if (user != null)
+                {
+                    int role = user.UserRole;
+                    MessageBox.Show($"{role}", "sd");
+                    Classes.ClassFrame.frame.Navigate(new PageProductList(role));
+                }
+                else
+                {
+                    MessageBox.Show("Введен не верный логин или пароль", "Сообщение");
+                   
+                    Windows.WindowCaptcha w = new Windows.WindowCaptcha();
+                    
+                    TextPassword.Text = "";
+                    TextLogin.Text = "";
+                    w.ShowDialog();
+                }
+           
         }
 
         private void ButtonEntrance_Click(object sender, RoutedEventArgs e)
@@ -55,9 +114,17 @@ namespace YPMyhina.Pages
 
         private void TextPassword_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Enter)
+            try
             {
-                Proverka();
+
+                if (e.Key == Key.Enter)
+                {
+                    Proverka();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Что-то пошло не так", "Ошибка");
             }
         }
     }

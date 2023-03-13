@@ -18,10 +18,12 @@
 
         <StackPanel Grid.Row="1">
             <StackPanel Margin="50,50,50,50">
+                <TextBlock Name="TextPodscazka"></TextBlock>
                 <TextBlock>Логин*:</TextBlock>
                 <TextBox KeyDown="TextLogin_KeyDown"  Name="TextLogin"></TextBox>
                 <TextBlock>Пароль*:</TextBlock>
                 <TextBox KeyDown="TextPassword_KeyDown" Name="TextPassword"></TextBox>
+                <TextBlock Name="TextTimer"></TextBlock>
                 <Button Name="ButtonEntrance" Click="ButtonEntrance_Click">Войти</Button>
                 <TextBlock  HorizontalAlignment="Center">Войти, как гость</TextBlock>
             </StackPanel>

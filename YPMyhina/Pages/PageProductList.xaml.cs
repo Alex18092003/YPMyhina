@@ -27,6 +27,20 @@ namespace YPMyhina
         public PageProductList( int role)
         {
             InitializeComponent();
+            ListProduct.ItemsSource = ClassBase.entities.Product.ToList();
+        }
+
+        private void ButtonExit_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Classes.ClassFrame.frame.Navigate(new Pages.PageAuthorization());
+            }
+            catch
+            {
+                MessageBox.Show("Что-то пошло не так", "Ошибка");
+            }
+
         }
     }
 }

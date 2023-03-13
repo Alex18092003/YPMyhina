@@ -28,11 +28,11 @@ namespace YPMyhina
         public string ProductImage { get; set; }
         public int ProductManufacturer { get; set; }
         public int ProductCost { get; set; }
-        public Nullable<decimal> ProductDiscountAmount { get; set; }
+        public decimal ProductDiscountAmount { get; set; }
         public int ProductQuantityInStock { get; set; }
         public string ProductStatus { get; set; }
         public int SingleMeasurement { get; set; }
-        public int ProductDiscountMax { get; set; }
+        public decimal ProductDiscountMax { get; set; }
         public int ProductProvider { get; set; }
     
         public virtual Category Category { get; set; }

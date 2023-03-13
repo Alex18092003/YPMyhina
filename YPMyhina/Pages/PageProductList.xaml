@@ -7,6 +7,9 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Список товаров">
+    <Page.Resources>
+        <BitmapImage x:Key="defaultImage" UriSource="../Resorces/pocture.png"></BitmapImage>
+    </Page.Resources>
 
     <Grid>
         <Grid.RowDefinitions>
@@ -14,13 +17,16 @@
             <RowDefinition Height="2*"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" >
-            <Image Width="100" Height="100" Source="../Resorces/logo.png" HorizontalAlignment="Left"></Image>
+        <StackPanel Grid.Row="0"  Orientation="Horizontal">
+      
+            <Image  Width="100" Height="100" Source="../Resorces/logo.png" HorizontalAlignment="Left"></Image>
             <TextBlock>Товары</TextBlock>
+            <Button Name="ButtonExit" Click="ButtonExit_Click">Выход</Button>
+            <TextBlock Name="TextFIO"></TextBlock>
         </StackPanel>
        
         <StackPanel Grid.Row="1">
-            <ListView Name="ListProduct" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ListView Height="300" Name="ListProduct" ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
                         <StackPanel >
@@ -30,14 +36,17 @@
                 </ListView.ItemsPanel>
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <Border BorderBrush="GreenYellow">
+                        <Border BorderBrush="GreenYellow" BorderThickness="2">
                             <Grid>
                                 <StackPanel Orientation="Horizontal">
-                                    <Image></Image>
+                                    <Image Width="100" Height="100" Name="ImageProduct" Source="{Binding ProductImage, TargetNullValue={StaticResource defaultImage}}"></Image>
                                     <StackPanel>
-                                        
+                                        <TextBlock Text="{Binding ProductName}" Name="TextName"></TextBlock>
+                                        <TextBlock Text="{Binding ProductDescription}" Name="TextDescription"></TextBlock>
+                                        <TextBlock Text="{Binding Manufacturer.ManufacturerName}" Name="TextManufacturer"></TextBlock>
+                                        <TextBlock Text="{Binding ProductCost}" Name="TextPrice"></TextBlock>
                                     </StackPanel>
-                                    <TextBlock Name="Text"></TextBlock>
+                                    <TextBlock Text="{Binding ProductDiscountAmount}" Name="Text"></TextBlock>
                                 </StackPanel>
                             </Grid>
                         </Border>
