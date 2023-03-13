@@ -67,6 +67,8 @@
     <Compile Include="Category.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Classes\ClassBase.cs" />
+    <Compile Include="Classes\ClassFrame.cs" />
     <Compile Include="Manufacturer.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -80,6 +82,12 @@
     </Compile>
     <Compile Include="OrderProduct.cs">
       <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PageProductList.xaml.cs">
+      <DependentUpon>PageProductList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PageAuthorization.xaml.cs">
+      <DependentUpon>PageAuthorization.xaml</DependentUpon>
     </Compile>
     <Compile Include="Point.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -117,6 +125,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\PageProductList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PageAuthorization.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model1.Context.cs">
@@ -175,8 +191,6 @@
     <Resource Include="Image\А112Т4.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Classes\" />
-    <Folder Include="Pages\" />
     <Folder Include="Windows\" />
   </ItemGroup>
   <ItemGroup>

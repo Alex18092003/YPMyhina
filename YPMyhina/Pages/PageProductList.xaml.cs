@@ -16,16 +16,17 @@ using System.Windows.Shapes;
 namespace YPMyhina
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для PageProductList.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class PageProductList : Page
     {
-        public MainWindow()
+        public PageProductList()
         {
             InitializeComponent();
-            ClassBase.entities = new Entities();
-            Classes.ClassFrame.frame = frame;
-            Classes.ClassFrame.frame.Navigate(new Pages.PageAuthorization());
+        }
+        public PageProductList( int role)
+        {
+            InitializeComponent();
         }
     }
 }
