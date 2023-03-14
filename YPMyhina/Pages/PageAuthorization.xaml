@@ -16,17 +16,20 @@
             <RowDefinition Height="2*"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <Image Width="100" Height="100" Grid.Row="0" Source="../Resorces/logo.png"  HorizontalAlignment="Left"></Image>
-
+        <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center" Margin="10,0,10,0">
+            <Image Width="100" Height="100"  Source="../Resorces/logo.png"  HorizontalAlignment="Left"></Image>
+            <TextBlock Margin="20,0,0,0" VerticalAlignment="Center" FontSize="30">Авторизация</TextBlock>
+        </StackPanel>
+       
         <StackPanel Grid.Row="1">
             <StackPanel Margin="50,50,50,50">
-                <TextBlock Name="TextPodscazka"></TextBlock>
-                <TextBlock>Логин*:</TextBlock>
-                <TextBox KeyDown="TextLogin_KeyDown"  Name="TextLogin"></TextBox>
-                <TextBlock>Пароль*:</TextBlock>
-                <TextBox KeyDown="TextPassword_KeyDown" Name="TextPassword"></TextBox>
-                <TextBlock Name="TextTimer"></TextBlock>
-                <Button Name="ButtonEntrance" Click="ButtonEntrance_Click">Войти</Button>
+                <TextBlock FontSize="20" Name="TextPodscazka"></TextBlock>
+                <TextBlock FontSize="20">Логин*:</TextBlock>
+                <TextBox KeyDown="TextLogin_KeyDown" Height="25"  Name="TextLogin"></TextBox>
+                <TextBlock FontSize="20">Пароль*:</TextBlock>
+                <TextBox Height="25" KeyDown="TextPassword_KeyDown" Name="TextPassword"></TextBox>
+                <TextBlock FontSize="20" Name="TextTimer"></TextBlock>
+                <Button Height="30" FontSize="15" Name="ButtonEntrance" Click="ButtonEntrance_Click">Войти</Button>
                 <TextBlock Name="TextGuest" MouseDown="TextBlock_MouseDown" HorizontalAlignment="Center">Войти, как гость</TextBlock>
             </StackPanel>
             

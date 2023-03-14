@@ -4,6 +4,14 @@
              xmlns:local="clr-namespace:YPMyhina"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+
+        <Style TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Comic Sans MS"></Setter>
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="FontFamily" Value="Comic Sans MS"></Setter>
+      
+        </Style>
     </Application.Resources>
 </Application>

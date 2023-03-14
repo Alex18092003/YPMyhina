@@ -26,27 +26,31 @@ namespace YPMyhina
         {
             InitializeComponent();
 
-            ListProduct.ItemsSource = ClassBase.entities.Product.ToList();
-
-            ComboSort.SelectedIndex = 0;
-            ComboFilter.SelectedIndex = 0;
+            Conclusion();
         }
 
-        public PageProductList( int role)
+        public PageProductList(string FIO)
         {
             InitializeComponent();
-            ListProduct.ItemsSource = ClassBase.entities.Product.ToList();
+            
 
-           
+            Conclusion();
+            TextFIO.Text = FIO;
+        }
+
+        private void Conclusion()
+        {
+            ListProduct.ItemsSource = ClassBase.entities.Product.ToList();
             ComboSort.SelectedIndex = 0;
             ComboFilter.SelectedIndex = 0;
+            TextCountBD.Text = "Количество записей в БД: " + ClassBase.entities.Product.ToList().Count;
         }
+
 
         private void ButtonExit_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                
                 Classes.ClassFrame.frame.Navigate(new Pages.PageAuthorization());
             }
             catch
@@ -62,76 +66,79 @@ namespace YPMyhina
         {
             List<Product> products = ClassBase.entities.Product.ToList();
 
-            listFilter = new List<Product>();
+            //listFilter = new List<Product>();
             listFilter = ClassBase.entities.Product.ToList();
-            //Сортировка
-            switch (ComboSort.SelectedIndex)
-            {
-                case 1:
-                    {
-                        listFilter.Sort((x,y) => x.ProductCost.CompareTo(y.ProductCost));
-                    }
-                    break;
-                case 2:
-                    {
-                        listFilter.Sort((x,y) => x.ProductCost.CompareTo(y.ProductCost));
-                        listFilter.Reverse();
-
-                    }
-                    break;
-            }
             //Фильтрация
-           
+
             if (ComboFilter.SelectedIndex == 1)
             {
-               // listFilter = new List<Product>();
-                listFilter.Where(x => x.ProductDiscountAmount >= 0 && Convert.ToDouble(x.ProductDiscountAmount) <= 9.99).ToList();
+                listFilter = new List<Product>();
+                listFilter.Where(x => x.ProductDiscountAmount >= 0 && Convert.ToDouble(x.ProductDiscountAmount) <= 9.9999).ToList();
             }
             else if (ComboFilter.SelectedIndex == 2)
             {
-                //listFilter = new List<Product>();
-                listFilter.Where(x => x.ProductDiscountAmount >= 10 && Convert.ToDouble(x.ProductDiscountAmount) <= 14.99).ToList();
+                listFilter = new List<Product>();
+                listFilter.Where(x => x.ProductDiscountAmount >= 10 && Convert.ToDouble(x.ProductDiscountAmount) <= 14.9999).ToList();
             }
             else if (ComboFilter.SelectedIndex == 3)
             {
-                //listFilter = new List<Product>();
-                listFilter.Where(x => x.ProductDiscountAmount >= 15 ).ToList();
+                listFilter = new List<Product>();
+                listFilter.Where(x => x.ProductDiscountAmount >= 15).ToList();
             }
             else
             {
                 listFilter = ClassBase.entities.Product.ToList();
             }
 
+            //Сортировка
+            switch (ComboSort.SelectedIndex)
+            {
+                case 1:
+                    {
+                        listFilter.Sort((x, y) => x.ProductCost.CompareTo(y.ProductCost));
+                    }
+                    break;
+                case 2:
+                    {
+                        listFilter.Sort((x, y) => x.ProductCost.CompareTo(y.ProductCost));
+                        listFilter.Reverse();
+
+                    }
+                    break;
+            }
+            
+
             //поиск
-            if(!string.IsNullOrWhiteSpace(TextBoxSeach.Text))
+            if (!string.IsNullOrWhiteSpace(TextBoxSeach.Text))
             {
                 listFilter = listFilter.Where(x => x.ProductName.ToLower().Contains(TextBoxSeach.Text.ToLower())).ToList();
             }
 
             ListProduct.ItemsSource = listFilter;
-            if(listFilter.Count == 0)
+            if (listFilter.Count == 0)
             {
                 MessageBox.Show("Нет записей", "Информация");
             }
-
+            TextCount.Text = listFilter.Count + "из" + ClassBase.entities.Product.ToList().Count;
         }
 
         private void ComboSort_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
-                Filter();
-          
+
+            Filter();
+
         }
 
         private void ComboFilter_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
-                Filter();
-           
+
+            Filter();
+
         }
 
         private void TextBoxSeach_TextChanged(object sender, TextChangedEventArgs e)
         {
             Filter();
         }
+    }
 }

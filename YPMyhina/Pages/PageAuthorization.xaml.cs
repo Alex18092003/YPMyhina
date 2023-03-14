@@ -89,9 +89,9 @@ namespace YPMyhina.Pages
                 User user = ClassBase.entities.User.FirstOrDefault(x => x.UserPassword == TextPassword.Text && x.UserLogin == TextLogin.Text);
                 if (user != null)
                 {
-                    int role = user.UserRole;
-                    MessageBox.Show($"{role}", "sd");
-                    Classes.ClassFrame.frame.Navigate(new PageProductList(role));
+                    string FIO = user.UserSurname + " " + user.UserName + " " + user.UserPatronymic;
+                   
+                    Classes.ClassFrame.frame.Navigate(new PageProductList(FIO));
                 }
                 else
                 {
