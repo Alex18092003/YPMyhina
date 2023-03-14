@@ -28,6 +28,7 @@ namespace YPMyhina.Pages
         {
             InitializeComponent();
         }
+
         public PageAuthorization(int j)
         {
             InitializeComponent();
@@ -39,7 +40,7 @@ namespace YPMyhina.Pages
             {
                 TextPassword.IsEnabled = false;
                 TextLogin.IsEnabled = false;
-               ButtonEntrance.IsEnabled = false;
+                ButtonEntrance.IsEnabled = false;
                 dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
                 dispatcherTimer.Tick += new EventHandler(Back);
                 dispatcherTimer.Start();
@@ -55,13 +56,11 @@ namespace YPMyhina.Pages
                 TextPassword.IsEnabled = true;
                 TextLogin.IsEnabled = true;
                 ButtonEntrance.IsEnabled = true;
-                TextTimer.Text = "Попробуйте ввести ещё раз Логин и Пароль";
-                
+                TextTimer.Text = "Попробуйте ввести ещё раз Логин и Пароль"; 
             }
             else
             {
                 TextTimer.Text = "Повторно ввести Логин и Пароль можно будет через: " + timer;
-               
             }
             timer--;
         }
@@ -103,7 +102,7 @@ namespace YPMyhina.Pages
                     TextPassword.Text = "";
                     TextLogin.Text = "";
                     w.ShowDialog();
-                }
+            }
            
         }
 
@@ -121,6 +120,18 @@ namespace YPMyhina.Pages
                 {
                     Proverka();
                 }
+            }
+            catch
+            {
+                MessageBox.Show("Что-то пошло не так", "Ошибка");
+            }
+        }
+
+        private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                Classes.ClassFrame.frame.Navigate(new PageProductList());
             }
             catch
             {

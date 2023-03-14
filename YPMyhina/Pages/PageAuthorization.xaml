@@ -6,7 +6,9 @@
       xmlns:local="clr-namespace:YPMyhina.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Авторизация">
+      Title="Авторизация"
+    
+     >
 
     <Grid>
         <Grid.RowDefinitions>
@@ -25,7 +27,7 @@
                 <TextBox KeyDown="TextPassword_KeyDown" Name="TextPassword"></TextBox>
                 <TextBlock Name="TextTimer"></TextBlock>
                 <Button Name="ButtonEntrance" Click="ButtonEntrance_Click">Войти</Button>
-                <TextBlock  HorizontalAlignment="Center">Войти, как гость</TextBlock>
+                <TextBlock Name="TextGuest" MouseDown="TextBlock_MouseDown" HorizontalAlignment="Center">Войти, как гость</TextBlock>
             </StackPanel>
             
         </StackPanel>

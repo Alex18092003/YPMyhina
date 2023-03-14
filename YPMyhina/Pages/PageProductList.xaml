@@ -8,8 +8,9 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Список товаров">
     <Page.Resources>
-        <BitmapImage x:Key="defaultImage" UriSource="../Resorces/pocture.png"></BitmapImage>
+        <BitmapImage x:Key="defaultImage" UriSource="../Resorces/picture.png"></BitmapImage>
     </Page.Resources>
+   
 
     <Grid>
         <Grid.RowDefinitions>
@@ -18,11 +19,43 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0"  Orientation="Horizontal">
-      
+            
             <Image  Width="100" Height="100" Source="../Resorces/logo.png" HorizontalAlignment="Left"></Image>
             <TextBlock>Товары</TextBlock>
-            <Button Name="ButtonExit" Click="ButtonExit_Click">Выход</Button>
+            <Button Name="ButtonExit" Click="ButtonExit_Click">
+                <Button.ToolTip>
+                    <ToolTip>
+                        Нажмите для выхода к окну авторизации
+                    </ToolTip>
+                </Button.ToolTip>
+                Выход</Button>
             <TextBlock Name="TextFIO"></TextBlock>
+            <ComboBox  SelectionChanged="ComboSort_SelectionChanged" Height="30" Width="200" Name="ComboSort" >
+                <ComboBox.ToolTip>
+                    <ToolTip>
+                        Раскройте список сортировки
+                    </ToolTip>
+                </ComboBox.ToolTip>
+                <ComboBoxItem>Без сортировки</ComboBoxItem>
+                <ComboBoxItem>По возрастанию стоимости</ComboBoxItem>
+                <ComboBoxItem>По убывания стоимости</ComboBoxItem>
+            </ComboBox>
+            <ComboBox Name="ComboFilter" SelectionChanged="ComboFilter_SelectionChanged" Height="30" Width="200">
+                <ComboBox.ToolTip>
+                    <ToolTip>
+                        Раскройте список фильтрации
+                    </ToolTip>
+                </ComboBox.ToolTip>
+                <ComboBoxItem>Все диапазоны</ComboBoxItem>
+                <ComboBoxItem>От 0 - до 9,99%</ComboBoxItem>
+                <ComboBoxItem>От 10 - до 14,99%</ComboBoxItem>
+                <ComboBoxItem>От 15%</ComboBoxItem>
+            </ComboBox>
+            <StackPanel>
+                <TextBlock>Поиск по наименованию товара</TextBlock>
+                <TextBox TextChanged="TextBoxSeach_TextChanged" Name="TextBoxSeach" Width="100"></TextBox>
+            </StackPanel>
+            
         </StackPanel>
        
         <StackPanel Grid.Row="1">
@@ -36,15 +69,21 @@
                 </ListView.ItemsPanel>
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <Border BorderBrush="GreenYellow" BorderThickness="2">
-                            <Grid>
+                        <Border BorderBrush="Black" BorderThickness="2">
+                            <Grid Background="{Binding ColorDiscount}">
                                 <StackPanel Orientation="Horizontal">
                                     <Image Width="100" Height="100" Name="ImageProduct" Source="{Binding ProductImage, TargetNullValue={StaticResource defaultImage}}"></Image>
                                     <StackPanel>
                                         <TextBlock Text="{Binding ProductName}" Name="TextName"></TextBlock>
                                         <TextBlock Text="{Binding ProductDescription}" Name="TextDescription"></TextBlock>
                                         <TextBlock Text="{Binding Manufacturer.ManufacturerName}" Name="TextManufacturer"></TextBlock>
-                                        <TextBlock Text="{Binding ProductCost}" Name="TextPrice"></TextBlock>
+                                        <StackPanel Orientation="Horizontal">
+                                            
+                                            <TextBlock Margin="0,0,10,0" Text="{Binding StringProductCost}" TextDecorations="Strikethrough"  Name="TextPrice"></TextBlock>
+                                            <TextBlock  Margin="0,0,10,0" Text="{Binding StringProductCost2}"   Name="TextCost"></TextBlock>
+                                            <TextBlock Margin="0,0,10,0" Text="{Binding StringProductCost3}"   Name="TextCost2"></TextBlock>
+                                        </StackPanel>
+                                       
                                     </StackPanel>
                                     <TextBlock Text="{Binding ProductDiscountAmount}" Name="Text"></TextBlock>
                                 </StackPanel>
