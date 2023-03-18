@@ -29,13 +29,14 @@ namespace YPMyhina
             Conclusion();
         }
 
-        public PageProductList(string FIO)
+        public PageProductList(User user)
         {
             InitializeComponent();
             
 
             Conclusion();
-            TextFIO.Text = FIO;
+            TextFIO.Text = user.UserSurname + " " +user.UserSurname + " " + user.UserPatronymic;
+          
         }
 
         private void Conclusion()
@@ -139,6 +140,46 @@ namespace YPMyhina
         private void TextBoxSeach_TextChanged(object sender, TextChangedEventArgs e)
         {
             Filter();
+        }
+
+        //первая заглавная буква
+        private void TextBoxSeach_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            try
+            {
+               
+                if (TextBoxSeach.Text.Length == 1)
+                {
+                    TextBoxSeach.Text = TextBoxSeach.Text.ToUpper();
+                    TextBoxSeach.Select(TextBoxSeach.Text.Length, 0);
+                }
+
+            }
+            catch
+            {
+                MessageBox.Show("Что-то пошло не так", "Ошибка");
+            }
+        }
+
+        private void ButtonOrder_Click(object sender, RoutedEventArgs e)
+        {
+            Windows.OrderWindow w = new Windows.OrderWindow();
+            w.ShowDialog();
+
+            if(ClassBase.products.Count == 0)
+            {
+                ButtonOrder.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            ButtonOrder.Visibility = Visibility.Visible;
+            //Product product = (Product)ListProduct.SelectedItem;
+            MenuItem mi = (MenuItem)sender;
+            string index = mi.Uid;
+            Product product = ClassBase.entities.Product.FirstOrDefault(x => x.ProductArticleNumber == index);
+            ClassBase.products.Add(product);
         }
     }
 }

@@ -5,13 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:YPMyhina.Windows"
         mc:Ignorable="d"
-        Title="WindowCaptcha" Height="300" Width="300">
+         Icon="../Resorces/icon.ico"
+        Title="Капча" Height="220" Width="200"
+        WindowStartupLocation="CenterScreen"
+        >
     <Grid>
         <StackPanel>
-            <TextBlock>Введите код с картинки</TextBlock>
-            <Canvas Width="200" Height="70" Name="CanvasCaptcha"></Canvas>
-            <TextBox KeyDown="TextBoxCaptcha_KeyDown" Name="TextBoxCaptcha"></TextBox>
-            <Button Click="ButtonEnter_Click" Name="ButtonEnter">Ввод</Button>
+            <TextBlock HorizontalAlignment="Center" Margin="0,10,0,10">Введите код с картинки</TextBlock>
+            <Canvas Margin="0,0,0,10" Background="#76e383" Width="170" Height="70" Name="CanvasCaptcha"></Canvas>
+            <TextBox Margin="10,0,10,10" KeyDown="TextBoxCaptcha_KeyDown" Name="TextBoxCaptcha"></TextBox>
+            <Button Margin="10,5,10,0" Template="{StaticResource ResourceKey=BtnSt}" Click="ButtonEnter_Click" Name="ButtonEnter">Ввод</Button>
         </StackPanel>
         
         

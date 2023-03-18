@@ -5,7 +5,9 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:YPMyhina.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="800" d:DesignWidth="1200"
+     MinHeight="800"
+        MaxHeight="800" MinWidth="1200" MaxWidth="1200"
       Title="Авторизация"
     
      >
@@ -18,19 +20,19 @@
 
         <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center" Margin="10,0,10,0">
             <Image Width="100" Height="100"  Source="../Resorces/logo.png"  HorizontalAlignment="Left"></Image>
-            <TextBlock Margin="20,0,0,0" VerticalAlignment="Center" FontSize="30">Авторизация</TextBlock>
+            <TextBlock Margin="20,0,0,0" VerticalAlignment="Center" FontSize="50">Авторизация</TextBlock>
         </StackPanel>
        
         <StackPanel Grid.Row="1">
-            <StackPanel Margin="50,50,50,50">
-                <TextBlock FontSize="20" Name="TextPodscazka"></TextBlock>
-                <TextBlock FontSize="20">Логин*:</TextBlock>
-                <TextBox KeyDown="TextLogin_KeyDown" Height="25"  Name="TextLogin"></TextBox>
-                <TextBlock FontSize="20">Пароль*:</TextBlock>
-                <TextBox Height="25" KeyDown="TextPassword_KeyDown" Name="TextPassword"></TextBox>
-                <TextBlock FontSize="20" Name="TextTimer"></TextBlock>
-                <Button Height="30" FontSize="15" Name="ButtonEntrance" Click="ButtonEntrance_Click">Войти</Button>
-                <TextBlock Name="TextGuest" MouseDown="TextBlock_MouseDown" HorizontalAlignment="Center">Войти, как гость</TextBlock>
+            <StackPanel Margin="100,0,100,0">
+              
+                <TextBlock FontSize="30" Margin="0,20,0,10">Логин*:</TextBlock>
+                <TextBox KeyDown="TextLogin_KeyDown" Height="40" FontSize="25" Name="TextLogin"></TextBox>
+                <TextBlock FontSize="30" Margin="0,20,0,10">Пароль*:</TextBlock>
+                <TextBox Height="40" FontSize="25" KeyDown="TextPassword_KeyDown" Name="TextPassword"></TextBox>
+                <TextBlock Margin="0,10,0,10" FontSize="30" Name="TextTimer"></TextBlock>
+                <Button Margin="0,10,0,0" Template="{StaticResource ResourceKey=BtnSt}"  FontSize="40" Name="ButtonEntrance" Click="ButtonEntrance_Click">Войти</Button>
+                <TextBlock Margin="0,20,0,0" FontSize="30" Name="TextGuest" MouseDown="TextBlock_MouseDown" HorizontalAlignment="Center">Войти, как гость</TextBlock>
             </StackPanel>
             
         </StackPanel>

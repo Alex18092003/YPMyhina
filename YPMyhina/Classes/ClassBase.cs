@@ -9,5 +9,6 @@ namespace YPMyhina
      class ClassBase
     {
         public static Entities entities;
+        public static List<Product> products = new List<Product>();
     }
 }

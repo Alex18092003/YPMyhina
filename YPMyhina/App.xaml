@@ -9,9 +9,30 @@
             <Setter Property="FontFamily" Value="Comic Sans MS"></Setter>
         </Style>
 
+        <Style TargetType="TextBox">
+            <Setter Property="FontFamily" Value="Comic Sans MS"></Setter>
+        </Style>
+
         <Style TargetType="Button">
             <Setter Property="FontFamily" Value="Comic Sans MS"></Setter>
-      
+            <Setter Property="Background" Value="#76e383"></Setter>
+            <Setter Property="Foreground" Value="Black"></Setter>
+        </Style>
+
+        <ControlTemplate x:Key="BtnSt" TargetType="Button">
+            <Border CornerRadius="10" BorderBrush="#498c51" BorderThickness="1" Background="{TemplateBinding Background}">
+                <ContentControl Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center"></ContentControl>
+            </Border>
+        </ControlTemplate>
+
+        <Style TargetType="Window">
+            <Setter Property="FontFamily" Value="Comic Sans MS"></Setter>
+            <Setter Property="FontSize" Value="24"></Setter>
+        </Style>
+
+        <Style TargetType="Page">
+            <Setter Property="FontFamily" Value="Comic Sans MS"></Setter>
+            <Setter Property="FontSize" Value="24"></Setter>
         </Style>
     </Application.Resources>
 </Application>

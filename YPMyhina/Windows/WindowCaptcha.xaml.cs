@@ -19,7 +19,7 @@ namespace YPMyhina.Windows
     /// </summary>
     public partial class WindowCaptcha : Window
     {
-        public string text;
+        public string text = String.Empty;
 
 
         public WindowCaptcha()
@@ -31,10 +31,10 @@ namespace YPMyhina.Windows
                 SolidColorBrush brush = new SolidColorBrush(Color.FromRgb((byte)random.Next(256), (byte)random.Next(256), (byte)random.Next(256)));
                 Line line = new Line()
                 {
-                    X1 = random.Next((int)CanvasCaptcha.Height),
-                    X2 = random.Next((int)CanvasCaptcha.Width),
+                    X1 = random.Next((int)CanvasCaptcha.Width),
                     Y1 = random.Next((int)CanvasCaptcha.Height),
-                    Y2 = random.Next((int)CanvasCaptcha.Width),
+                    X2 = random.Next((int)CanvasCaptcha.Width),
+                    Y2 = random.Next((int)CanvasCaptcha.Height),
                     Stroke = brush,
                 };
                 CanvasCaptcha.Children.Add(line);
@@ -147,5 +147,6 @@ namespace YPMyhina.Windows
                 MessageBox.Show("Что-то пошло не так", "Ошибка");
             }
         }
+
     }
 }

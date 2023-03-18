@@ -77,5 +77,13 @@ namespace YPMyhina
             }
         }
 
+        public string Discount
+        {
+            get
+            {
+                return ProductDiscountAmount + "%";
+            }
+        }
+
     }
 }
