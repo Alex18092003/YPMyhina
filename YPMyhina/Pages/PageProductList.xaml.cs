@@ -20,6 +20,7 @@ namespace YPMyhina
     /// </summary>
     public partial class PageProductList : Page
     {
+        User user;
         List<Product> listFilter = new List<Product>();
 
         public PageProductList()
@@ -32,7 +33,7 @@ namespace YPMyhina
         public PageProductList(User user)
         {
             InitializeComponent();
-            
+            this.user = user;
 
             Conclusion();
             TextFIO.Text = user.UserSurname + " " +user.UserSurname + " " + user.UserPatronymic;
@@ -163,7 +164,7 @@ namespace YPMyhina
 
         private void ButtonOrder_Click(object sender, RoutedEventArgs e)
         {
-            Windows.OrderWindow w = new Windows.OrderWindow();
+            Windows.OrderWindow w = new Windows.OrderWindow(user);
             w.ShowDialog();
 
             if(ClassBase.products.Count == 0)

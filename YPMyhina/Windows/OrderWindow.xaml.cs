@@ -19,9 +19,42 @@ namespace YPMyhina.Windows
     /// </summary>
     public partial class OrderWindow : Window
     {
-        public OrderWindow()
+        User user;
+        public OrderWindow(User user)
         {
             InitializeComponent();
+            this.user = user;
+            ListOrder.SelectedItem = ClassBase.products;
+
+            List<Order> orders = ClassBase.entities.Order.ToList();
+            int count = 0;
+            foreach(Order order in orders)
+            {
+                count = order.OrderID;
+            }
+            TextOrderNumber.Text = " " + count + 1;
+
+            List<Point> pickupPoints = ClassBase.entities.Point.ToList();
+            ComboBoxOrderPickupPoint.Items.Add("Пункт выдачи");
+            foreach (Point pickup in pickupPoints)
+            {
+                ComboBoxOrderPickupPoint.Items.Add(pickup.PointIndex + " " + pickup.City + " " + pickup.Street + " " + pickup.House);
+            }
+            ComboBoxOrderPickupPoint.SelectedIndex = 0;
+
+            if (user != null)
+            {
+                TextName.Text = " " + user.UserSurname + " " + user.UserName + " " + user.UserPatronymic;
+            }
+            else
+            {
+                TextName.Text = " Гость";
+            }
+        }
+
+        private void ButtonAdd_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

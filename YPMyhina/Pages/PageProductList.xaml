@@ -94,7 +94,7 @@
                             <Grid  Background="{Binding ColorDiscount}">
                                 <Grid.ContextMenu>
                                     <ContextMenu>
-                                        <MenuItem Header="Добавить к заказу" Click="MenuItem_Click"></MenuItem>
+                                        <MenuItem Uid="{Binding ProductArticleNumber}" Header="Добавить к заказу" Click="MenuItem_Click"></MenuItem>
                                     </ContextMenu>
                                 </Grid.ContextMenu>
                                 <StackPanel Orientation="Horizontal">

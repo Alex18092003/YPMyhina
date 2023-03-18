@@ -10,7 +10,77 @@
         MinHeight="600" MinWidth="800"
         MaxHeight="600" MaxWidth="800"
         >
+
+    <Window.Resources>
+        <BitmapImage x:Key="defaultImage" UriSource="../Resorces/picture.png"></BitmapImage>
+    </Window.Resources>
+    
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="3*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0">
+            <TextBlock FontSize="50" HorizontalAlignment="Center">Заказ</TextBlock>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="20">Номер заказа: </TextBlock>
+                <TextBlock FontSize="20" Name="TextOrderNumber"></TextBlock>
+                <TextBlock Margin="20,0,0,0" FontSize="20">Заказчик: </TextBlock>
+                <TextBlock FontSize="20" Name="TextName"></TextBlock>
+            </StackPanel>
+            <TextBlock Margin="0,10,0,0" FontSize="20" HorizontalAlignment="Center">Пункт выдачи:</TextBlock>
+            <ComboBox Margin="0,10,0,0" FontSize="20" Width="500" Name="ComboBoxOrderPickupPoint"></ComboBox>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1">
+            <ListView Name="ListOrder" Height="270" >
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel HorizontalAlignment="Center"></StackPanel>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Padding="5" CornerRadius="5" BorderBrush="#498c51">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Width="80" Height="80" Source="{Binding ProductImage, TargetNullValue={StaticResource defaultImage}}" ></Image>
+
+                                <StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock FontSize="20" FontWeight="Bold">Наименование:</TextBlock>
+                                        <TextBlock FontSize="20" FontWeight="Bold" Text="{Binding ProductName}" Name="TextName"></TextBlock>
+                                        <TextBlock FontSize="20">Скидка:</TextBlock>
+                                        <TextBlock FontSize="20" Text="{Binding Discount}" Name="Text"></TextBlock>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock FontSize="20">Описание:</TextBlock>
+                                        <TextBlock FontSize="20" Text="{Binding ProductDescription}" Name="TextDescription"></TextBlock>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock FontSize="20">Производитель:</TextBlock>
+                                        <TextBlock FontSize="20" Text="{Binding Manufacturer.ManufacturerName}" Name="TextManufacturer"></TextBlock>
+                                    </StackPanel>
+
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock FontSize="20">Цена:</TextBlock>
+                                        <TextBlock FontSize="20" Margin="0,0,10,0" Text="{Binding StringProductCost}" TextDecorations="Strikethrough"  Name="TextPrice"></TextBlock>
+                                        <TextBlock FontSize="20" Margin="0,0,10,0" Text="{Binding StringProductCost2}"   Name="TextCost"></TextBlock>
+                                        <TextBlock FontSize="20" Margin="0,0,10,0" Text="{Binding StringProductCost3}"   Name="TextCost2"></TextBlock>
+                                    </StackPanel>
+                                </StackPanel>
+                                
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Button Click="ButtonAdd_Click"  FontSize="30" Width="200"  Name="ButtonAdd" Template="{StaticResource ResourceKey=BtnSt}" >Заказать</Button>
+        </StackPanel>
+
     </Grid>
 </Window>
