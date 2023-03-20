@@ -40,6 +40,7 @@ namespace YPMyhina
           
         }
 
+
         private void Conclusion()
         {
             ListProduct.ItemsSource = ClassBase.entities.Product.ToList();
@@ -68,7 +69,6 @@ namespace YPMyhina
         {
             List<Product> products = ClassBase.entities.Product.ToList();
 
-            //listFilter = new List<Product>();
             listFilter = ClassBase.entities.Product.ToList();
             //Фильтрация
 
@@ -176,7 +176,6 @@ namespace YPMyhina
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
             ButtonOrder.Visibility = Visibility.Visible;
-            //Product product = (Product)ListProduct.SelectedItem;
             MenuItem mi = (MenuItem)sender;
             string index = mi.Uid;
             Product product = ClassBase.entities.Product.FirstOrDefault(x => x.ProductArticleNumber == index);
