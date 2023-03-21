@@ -81,7 +81,7 @@ namespace YPMyhina
         {
             get
             {
-                return ProductDiscountAmount + "%";
+                return  Convert.ToInt32( ProductDiscountAmount) + "%";
             }
         }
 

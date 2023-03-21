@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:YPMyhina"
         mc:Ignorable="d"
-        Title="Пиши-стирай" Height="800" Width="1200" MinHeight="800"
-         MinWidth="1200" 
+        Title="Пиши-стирай" Height="800" Width="1300" MinHeight="800"
+         MinWidth="1300" 
         Icon="Resorces/icon.ico">
     <Grid>
         <Frame Name="frame" NavigationUIVisibility="Hidden">
