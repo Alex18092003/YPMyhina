@@ -35,50 +35,71 @@
         </StackPanel>
 
         <StackPanel Grid.Row="1">
-            <ListView Name="ListOrder" Height="270" >
+            <ListView Name="ListOrder" Height="270" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Stretch">
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <StackPanel HorizontalAlignment="Center"></StackPanel>
+                        <WrapPanel HorizontalAlignment="Center"></WrapPanel>
                     </ItemsPanelTemplate>
                 </ListView.ItemsPanel>
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Border Padding="5" CornerRadius="5" BorderBrush="#498c51">
-                            <StackPanel Orientation="Horizontal">
-                                <Image Width="80" Height="80" Source="{Binding ProductImage, TargetNullValue={StaticResource defaultImage}}" ></Image>
+                            <Grid Background="{Binding Color}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="4*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
 
-                                <StackPanel>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock FontSize="20" FontWeight="Bold">Наименование:</TextBlock>
-                                        <TextBlock FontSize="20" FontWeight="Bold" Text="{Binding ProductName}" Name="TextName"></TextBlock>
-                                        <TextBlock FontSize="20">Скидка:</TextBlock>
-                                        <TextBlock FontSize="20" Text="{Binding Discount}" Name="Text"></TextBlock>
+                                <StackPanel  Grid.Column="0" Orientation="Horizontal">
+                                    <Image Width="80" Height="80" Source="{Binding ProductImage, TargetNullValue={StaticResource defaultImage}}" ></Image>
+                                   </StackPanel>
+
+                                        <StackPanel Margin="20,0,0,0" Grid.Column="1">
+                                            <StackPanel  Orientation="Horizontal">
+                                        <TextBlock  >Наименование:</TextBlock>
+                                        <TextBlock   Text="{Binding ProductName}" Name="TextName"></TextBlock>
+                                        <TextBlock >Скидка:</TextBlock>
+                                        <TextBlock  Text="{Binding Discount}" Name="Text"></TextBlock>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock FontSize="20">Описание:</TextBlock>
-                                        <TextBlock FontSize="20" Text="{Binding ProductDescription}" Name="TextDescription"></TextBlock>
+                                        <TextBlock >Описание:</TextBlock>
+                                        <TextBlock  Text="{Binding ProductDescription}" Name="TextDescription"></TextBlock>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock FontSize="20">Производитель:</TextBlock>
-                                        <TextBlock FontSize="20" Text="{Binding Manufacturer.ManufacturerName}" Name="TextManufacturer"></TextBlock>
+                                        <TextBlock >Производитель:</TextBlock>
+                                        <TextBlock  Text="{Binding Manufacturer.ManufacturerName}" Name="TextManufacturer"></TextBlock>
                                     </StackPanel>
 
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock FontSize="20">Цена:</TextBlock>
-                                        <TextBlock FontSize="20" Margin="0,0,10,0" Text="{Binding StringProductCost}" TextDecorations="Strikethrough"  Name="TextPrice"></TextBlock>
-                                        <TextBlock FontSize="20" Margin="0,0,10,0" Text="{Binding StringProductCost2}"   Name="TextCost"></TextBlock>
-                                        <TextBlock FontSize="20" Margin="0,0,10,0" Text="{Binding StringProductCost3}"   Name="TextCost2"></TextBlock>
+                                        <TextBlock >Цена:</TextBlock>
+                                        <TextBlock  Margin="0,0,10,0" Text="{Binding StringProductCost}" TextDecorations="Strikethrough"  Name="TextPrice"></TextBlock>
+                                        <TextBlock  Margin="0,0,10,0" Text="{Binding StringProductCost2}"   Name="TextCost"></TextBlock>
+                                        <TextBlock  Margin="0,0,10,0" Text="{Binding StringProductCost3}"   Name="TextCost2"></TextBlock>
                                     </StackPanel>
+                                  </StackPanel>
+                                <StackPanel Margin="10,0,0,0"  Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center">
+                                    <StackPanel Orientation="Horizontal" >
+                                        <TextBlock Text="Количество: "/>
+                                        <TextBox Name="Count" Width="30" Text="1" Uid="{Binding ProductID}" TextChanged="Count_TextChanged"/>
+                                    </StackPanel>
+                                    <Button Name="Delete" Content="Удалить" Click="Delete_Click" Uid="{Binding ProductID}" Template="{StaticResource ResourceKey=BtnSt}" />
                                 </StackPanel>
-                                
-                            </StackPanel>
+
+
+                            </Grid>
                         </Border>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
         </StackPanel>
 
-        <StackPanel Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center">
+        <StackPanel Grid.Row="2" VerticalAlignment="Center" Orientation="Horizontal" >
+            <Button Click="ButtonBack_Click"  FontSize="30" Width="200"  Name="ButtonBack" Template="{StaticResource ResourceKey=BtnSt}" >Назад</Button>
+            <StackPanel Orientation="Vertical">
+                <TextBlock Name="ResultAmount" Margin="0,0,10,0"/>
+                <TextBlock Name="ResultDiscount"/>
+            </StackPanel>
             <Button Click="ButtonAdd_Click"  FontSize="30" Width="200"  Name="ButtonAdd" Template="{StaticResource ResourceKey=BtnSt}" >Заказать</Button>
         </StackPanel>
 

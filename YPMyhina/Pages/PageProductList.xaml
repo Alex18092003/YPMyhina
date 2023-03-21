@@ -32,6 +32,7 @@
                     Выход
                 </Button>
             </StackPanel>
+           
 
             <StackPanel  Margin="10,0,10,0" Grid.Row="1" Orientation="Horizontal">
                 <TextBlock FontSize="50">Товары</TextBlock>
@@ -41,9 +42,13 @@
                 </StackPanel>
 
             </StackPanel>
+            <StackPanel Margin="10,0,10,0">
+                <Button FontSize="20" Template="{StaticResource ResourceKey=BtnSt}"  Width="100" Visibility="Collapsed" Name="ButtonOrders" Click="ButtonOrders_Click">
+                    Заказы
+                </Button>
+            </StackPanel>
 
-
-            <StackPanel Margin="80,0,0,0">
+            <StackPanel Margin="50,0,0,0">
                 <TextBlock FontSize="20"  Name="TextFIO"></TextBlock>
                 <Button Margin="0,20,0,0"  FontSize="30" Template="{StaticResource ResourceKey=BtnSt}"  Width="200" Visibility="Collapsed" Name="ButtonOrder" Click="ButtonOrder_Click" >Корзина</Button>
             </StackPanel>
@@ -87,7 +92,7 @@
                             <Grid  Background="{Binding ColorDiscount}">
                                 <Grid.ContextMenu>
                                     <ContextMenu>
-                                        <MenuItem Uid="{Binding ProductArticleNumber}" Header="Добавить к заказу" Click="MenuItem_Click"></MenuItem>
+                                        <MenuItem Uid="{Binding ProductID}" Header="Добавить к заказу" Click="MenuItem_Click"></MenuItem>
                                     </ContextMenu>
                                 </Grid.ContextMenu>
 

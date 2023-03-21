@@ -109,26 +109,6 @@ namespace YPMyhina
 
                 }
 
-                //if (ComboFilter.SelectedIndex == 1)
-                //{
-                //    listFilter = new List<Product>();
-                //    listFilter.Where(x => x.ProductDiscountAmount >= 0 && Convert.ToDouble(x.ProductDiscountAmount) <= 9.9999).ToList();
-                //}
-                //else if (ComboFilter.SelectedIndex == 2)
-                //{
-                //    listFilter = new List<Product>();
-                //    listFilter.Where(x => x.ProductDiscountAmount >= 10 && Convert.ToDouble(x.ProductDiscountAmount) <= 14.9999).ToList();
-                //}
-                //else if (ComboFilter.SelectedIndex == 3)
-                //{
-                //    listFilter = new List<Product>();
-                //    listFilter.Where(x => x.ProductDiscountAmount >= 15).ToList();
-                //}
-                //else
-                //{
-                //    listFilter = ClassBase.entities.Product.ToList();
-                //}
-
                 //Сортировка
                 switch (ComboSort.SelectedIndex)
                 {
@@ -219,8 +199,8 @@ namespace YPMyhina
         {
             ButtonOrder.Visibility = Visibility.Visible;
             MenuItem mi = (MenuItem)sender;
-            string index = mi.Uid;
-            Product product = ClassBase.entities.Product.FirstOrDefault(x => x.ProductArticleNumber == index);
+            int index = Convert.ToInt32( mi.Uid);
+            Product product = ClassBase.entities.Product.FirstOrDefault(x => x.ProductID == index);
             ClassBase.products.Add(product);
         }
 
@@ -234,6 +214,7 @@ namespace YPMyhina
             else if (user.UserRole == 2 || user.UserRole == 3)
             {
                 btn.Visibility = Visibility.Visible;
+                ButtonOrders.Visibility = Visibility.Visible;
             }
             else
             {
@@ -264,6 +245,18 @@ namespace YPMyhina
                     break;
                 default:
                     break;
+            }
+        }
+
+        private void ButtonOrders_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Classes.ClassFrame.frame.Navigate(new Pages.PageOrders());
+            }
+            catch
+            {
+                MessageBox.Show("Что-то пошло не так", "Ошибка");
             }
         }
     }

@@ -85,5 +85,37 @@ namespace YPMyhina
             }
         }
 
+        public double PriceOrder
+        {
+            get
+            {
+                if (ProductDiscountAmount != null)
+                {
+                    double b = Convert.ToDouble(ProductCost) / 100 * Convert.ToDouble(ProductDiscountAmount);
+                    double bb = ProductCost - b;
+                    return bb;
+                }
+                else
+                {
+                    double a = Convert.ToDouble(ProductCost);
+                    return a;
+                }
+            }
+        }
+
+        public double CostOrder
+        {
+            get
+            {
+                if (ProductDiscountAmount != null)
+                {
+
+                    return Math.Round(Convert.ToDouble(ProductCost));
+                }
+
+                return 0;
+            }
+        }
+
     }
 }
