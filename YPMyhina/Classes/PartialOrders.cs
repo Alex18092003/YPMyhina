@@ -62,32 +62,6 @@ namespace YPMyhina
         }
 
         public string StrDiscount => "" + DiscountProcent.ToString("0.00");
-        //public SolidColorBrush colorBackground
-        //{
-        //    get
-        //    {
-        //        bool b = true;
-        //        List<OrderProduct> orderProducts = MainWindow.DB.OrderProduct.Where(x => x.OrderID == OrderID).ToList();
-        //        foreach (OrderProduct product in orderProducts)
-        //        {
-        //            if (product.Count > product.Product.ProductQuantityInStock || product.Product.ProductQuantityInStock <= 3)
-        //            {
-        //                b = false;
-        //                break;
-        //            }
-        //        }
-        //        if (b)
-        //        {
-        //            SolidColorBrush color = (SolidColorBrush)new BrushConverter().ConvertFromString("#20b2aa");
-        //            return color;
-        //        }
-        //        else
-        //        {
-        //            SolidColorBrush color = (SolidColorBrush)new BrushConverter().ConvertFromString("#ff8c00");
-        //            return color;
-        //        }
 
-        //    }
-        //}
     }
 }

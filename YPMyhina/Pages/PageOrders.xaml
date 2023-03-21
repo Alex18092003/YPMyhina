@@ -22,6 +22,7 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Margin="10">
+                <TextBlock FontSize="25" HorizontalAlignment="Center" Margin="0,0,0,10" >Заказы</TextBlock>
                 <Image  Width="70" Height="70" Source="../Resorces/logo.png" ></Image>
                 <Button  Margin="0,20,0,0" HorizontalAlignment="Left" FontSize="30" Width="200" x:Name="ButonBack" Content="Назад"  Template="{StaticResource ResourceKey=BtnSt}" Click="ButonBack_Click"/>
             </StackPanel>
@@ -97,7 +98,7 @@
                                     <ColumnDefinition/>
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
-                                <Button  FontSize="20" Margin="0,0,0,10" Template="{StaticResource ResourceKey=BtnSt}" Name="ButonChangeStatus" Uid="{Binding OrderID}" Grid.Column="0" Content="Изменить"  HorizontalAlignment="Center" Width="300" Click="ButonChangeStatus_Click"/>
+                                <Button  FontSize="20" Margin="0,0,0,10" Template="{StaticResource ResourceKey=BtnSt}" Name="ButonChangeStatus" Uid="{Binding OrderID}" Grid.Column="0" Content="Изменить"  HorizontalAlignment="Center" Width="300" />
                             </Grid>
                         </StackPanel>
                     </Border>

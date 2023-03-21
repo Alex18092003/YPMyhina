@@ -252,7 +252,15 @@ namespace YPMyhina
         {
             try
             {
-                Classes.ClassFrame.frame.Navigate(new Pages.PageOrders());
+                if (user == null)
+                {
+                    Classes.ClassFrame.frame.Navigate(new Pages.PageOrders());
+                }
+                else if (user.UserRole == 2 || user.UserRole == 3 || user.UserRole == 1)
+                {
+                    Classes.ClassFrame.frame.Navigate(new Pages.PageOrders(user));
+                }
+            
             }
             catch
             {

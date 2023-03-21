@@ -96,7 +96,22 @@ namespace YPMyhina.Pages
 
         private void ButonBack_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                if (user == null)
+                {
+                    Classes.ClassFrame.frame.Navigate(new PageProductList());
+                }
+                else if (user.UserRole == 2 || user.UserRole == 3 || user.UserRole == 1)
+                {
+                    Classes.ClassFrame.frame.Navigate(new PageProductList(user));
+                }
 
+            }
+            catch
+            {
+                MessageBox.Show("Что-то пошло не так", "Ошибка");
+            }
         }
 
         private void ComboSort_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -109,9 +124,5 @@ namespace YPMyhina.Pages
             Filter();
         }
 
-        private void ButonChangeStatus_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }
