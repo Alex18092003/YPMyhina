@@ -5,9 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:YPMyhina"
       mc:Ignorable="d" 
-      d:DesignHeight="780" d:DesignWidth="1180"
-        MinHeight="780"
-        MaxHeight="780" MinWidth="1180" MaxWidth="1180"
+     Height="780" Width="1180"
+        
       Title="Список товаров">
     <Page.Resources>
         <BitmapImage x:Key="defaultImage" UriSource="../Resorces/picture.png"></BitmapImage>
@@ -98,8 +97,8 @@
                                     </ContextMenu>
                                 </Grid.ContextMenu>
                                 <StackPanel Orientation="Horizontal">
-                                    <Image Width="100" Height="100" Name="ImageProduct" Source="{Binding ProductImage, TargetNullValue={StaticResource defaultImage}}"></Image>
-                                    <StackPanel>
+                                    <Image Margin="10,0,0,0" Width="100" Height="100" Name="ImageProduct" Source="{Binding ProductImage, TargetNullValue={StaticResource defaultImage}}"></Image>
+                                    <StackPanel Margin="10,0,0,0">
                                         <StackPanel Orientation="Horizontal">
                                             <TextBlock FontSize="20" FontWeight="Bold">Наименование: </TextBlock>
                                             <TextBlock FontSize="20" FontWeight="Bold" Text="{Binding ProductName}" Name="TextName"></TextBlock>
@@ -120,6 +119,15 @@
                                             <TextBlock FontSize="20" Margin="0,0,10,0" Text="{Binding StringProductCost}" TextDecorations="Strikethrough"  Name="TextPrice"></TextBlock>
                                             <TextBlock FontSize="20" Margin="0,0,10,0" Text="{Binding StringProductCost2}"   Name="TextCost"></TextBlock>
                                             <TextBlock FontSize="20" Margin="0,0,10,0" Text="{Binding StringProductCost3}"   Name="TextCost2"></TextBlock>
+                                        </StackPanel>
+                                        <StackPanel Margin="0,0,0,10" Orientation="Horizontal">
+                                            <Button Width="100" Template="{StaticResource ResourceKey=BtnSt}" FontSize="20" Uid="{Binding ProductID}" Loaded="ButtonDelete_Loaded" Click="ButtonDelete_Click" Name="ButtonDelete" Content="Удалить">
+                                                <Button.ToolTip>
+                                                    <ToolTip>
+                                                        Нажмите для удаления товара
+                                                    </ToolTip>
+                                                </Button.ToolTip>
+                                            </Button>
                                         </StackPanel>
                                        
                                     </StackPanel>

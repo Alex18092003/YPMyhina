@@ -50,19 +50,26 @@ namespace YPMyhina.Pages
 
         private void Back(object sender, EventArgs e)
         {
-            if (timer == -1)
+            try
             {
-                dispatcherTimer.Stop();
-                TextPassword.IsEnabled = true;
-                TextLogin.IsEnabled = true;
-                ButtonEntrance.IsEnabled = true;
-                TextTimer.Text = "Попробуйте ввести ещё раз Логин и Пароль"; 
+                if (timer == -1)
+                {
+                    dispatcherTimer.Stop();
+                    TextPassword.IsEnabled = true;
+                    TextLogin.IsEnabled = true;
+                    ButtonEntrance.IsEnabled = true;
+                    TextTimer.Text = "Попробуйте ввести ещё раз Логин и Пароль";
+                }
+                else
+                {
+                    TextTimer.Text = "Повторно ввести Логин и Пароль можно будет через: " + timer;
+                }
+                timer--;
             }
-            else
+            catch
             {
-                TextTimer.Text = "Повторно ввести Логин и Пароль можно будет через: " + timer;
+                MessageBox.Show("Что-то пошло не так", "Ошибка");
             }
-            timer--;
         }
 
         private void TextLogin_KeyDown(object sender, KeyEventArgs e)
@@ -85,22 +92,28 @@ namespace YPMyhina.Pages
         /// </summary>
         private void Proverka()
         {
-
+            try
+            {
                 User user = ClassBase.entities.User.FirstOrDefault(x => x.UserPassword == TextPassword.Text && x.UserLogin == TextLogin.Text);
                 if (user != null)
                 {
-                
+
                     Classes.ClassFrame.frame.Navigate(new PageProductList(user));
                 }
                 else
                 {
                     MessageBox.Show("Введен не верный логин или пароль", "Сообщение");
-                   
+
                     Windows.WindowCaptcha w = new Windows.WindowCaptcha();
-                    
+
                     TextPassword.Text = "";
                     TextLogin.Text = "";
                     w.ShowDialog();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Что-то пошло не так", "Ошибка");
             }
            
         }
